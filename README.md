@@ -29,6 +29,7 @@ Pushy displays rich, grouped notifications using HTML, CSS, and JavaScript — s
 ├── styles.css                  # Styling for layout and components
 ├── write_json.php              # JSON endpoint to receive and save notifications
 ├── move_notification.php       # Handles trash/archive moves from the frontend
+├── tasker_trigger.py           # Send an http request to Tasker
 ├── statuses/                   # JSON files storage location
 │   ├── saved/                  # Archived (saved) notifications
 │   ├── trash/                  # Deleted (trashed) notifications
