@@ -145,6 +145,8 @@ MIT License — see [`LICENSE`](LICENSE) file for details.
 
 For feedback, ideas, or contributions, feel free to open an issue or fork the project.
 
+---
+
 Pushy: Because your notifications shouldn’t leave your network.
 
 
