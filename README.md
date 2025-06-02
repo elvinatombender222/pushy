@@ -14,11 +14,9 @@ Pushy displays rich, grouped notifications using HTML, CSS, and JavaScript — s
 - Lightweight, responsive frontend (HTML/CSS/JS)
 - Minimal backend: basic PHP scripts only (no database or frameworks)
 - Self-hosted and private by design — ideal for use with Tailscale
-- Tasker integration for mobile audio or automation triggers
 - Toast alerts for group changes and interactions
 - Clean UI with customizable color and image support
 - Simple JSON POST API for creating notifications
-- Group-based organization (e.g., "heartbeat", "media", "download")
 
 ---
 
