@@ -120,6 +120,8 @@ This solution offers a reliable, user-controlled alternative to push notificatio
 ## Tailscale
 Pushy runs entirely within my [Tailscale](https://tailscale.com) tailnet, so no certificates or login mechanisms are needed. If you’re familiar with Tailscale, no further explanation is required.
 
+---
+
 ## 🛠️ Roadmap / Future Plans
 
 - [ ] Add "Trash" view in addition to Active and Archive  
