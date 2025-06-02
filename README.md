@@ -34,7 +34,7 @@ Pushy displays rich, grouped notifications using HTML, CSS, and JavaScript — s
 ├── statuses/                   # JSON files storage location
 │   ├── saved/                  # Archived (saved) notifications
 │   ├── trash/                  # Deleted (trashed) notifications
-├── image/                      # Notification and presence icons (e.g., heartbeat.webp
+├── image/                      # Notification and presence icons (e.g., heartbeat.webp)
 ├── LICENSE                     # MIT License
 └── README.md                   # This file
 </pre>
