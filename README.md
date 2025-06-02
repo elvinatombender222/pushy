@@ -54,7 +54,7 @@ You can trigger a notification by sending a JSON payload via HTTP POST to the in
   "image": "'"$ALERT_ICON"'",
   "subtitle": "'"$ALERT_SUBTITLE"'",
   "details": "'"$DETAILS"'"
-}' http://100.100.57.70/Pushy/server/write_json.php
+}' http://{server IP}/Pushy/write_json.php
 </pre>
 
 ---
