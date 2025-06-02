@@ -46,6 +46,7 @@ You can trigger a notification by sending a JSON payload via HTTP POST to the in
 
 ### 🔧 Example `curl` Command
 
+<pre>
 ```bash
 /usr/bin/curl -X POST -H "Content-Type: application/json" -d '{
   "containerType": "routine",
@@ -54,6 +55,7 @@ You can trigger a notification by sending a JSON payload via HTTP POST to the in
   "subtitle": "'"$ALERT_SUBTITLE"'",
   "details": "'"$DETAILS"'"
 }' http://100.100.57.70/Pushy/server/write_json.php
+</pre>
 
 ---
 
