@@ -34,7 +34,7 @@ Pushy displays rich, grouped notifications using HTML, CSS, and JavaScript — s
 ├── statuses/                   # JSON files storage location
 │   ├── saved/                  # Archived (saved) notifications
 │   ├── trash/                  # Deleted (trashed) notifications
-├── image/                      # Notification and presence icons (e.g., {image name.webp)
+├── image/                      # Notification and presence icons (e.g., heartbeat.webp
 ├── LICENSE                     # MIT License
 └── README.md                   # This file
 </pre>
@@ -48,7 +48,6 @@ You can trigger a notification by sending a JSON payload via HTTP POST to the in
 ### 🔧 Example `curl` Command
 
 <pre>
-```bash
 /usr/bin/curl -X POST -H "Content-Type: application/json" -d '{
   "containerType": "routine",
   "group": "heartbeat",
@@ -138,3 +137,6 @@ Pushy was inspired by the excellent design of [Pushover](https://pushover.net), 
 ## 📦 License
 
 MIT License — see [`LICENSE`](LICENSE) file for details.
+
+For feedback, ideas, or contributions, feel free to open an issue or fork the project.
+
