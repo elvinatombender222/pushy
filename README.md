@@ -22,15 +22,15 @@ Pushy displays rich, grouped notifications using HTML, CSS, and JavaScript — s
 ---
 
 ## 📂 Project Structure
-/
-├── index.html # Main HTML interface
-├── script.js # Client-side interaction logic
-├── styles.css # Styling for layout and components
-├── image/ # Notification and presence icons
-├── statuses/ # JSON files for active notifications
-├── archive/ # JSON files for archived notifications
-├── LICENSE # MIT License
-└── README.md # This file
+
+index.html # Main HTML interface
+script.js # Client-side interaction logic
+styles.css # Styling for layout and components
+image/ # Notification and presence icons
+statuses/ # JSON files for active notifications
+archive/ # JSON files for archived notifications
+LICENSE # MIT License
+README.md # This file
 
 
 ---
