@@ -85,7 +85,7 @@ Then associate each with a different `.webp` icon and add logic to `script.js` a
 
 ## 📱 Tasker Integration via HTTP (Android Only)
 
-Pushy is a web app and cannot trigger native push notifications. To work around this, Tasker on Android can be configured to receive **HTTP requests** from the Pushy server when a new notification is added.
+Pushy is a web app and cannot trigger native push notifications. To work around this, [Tasker](https://tasker.joaoapps.com/) on Android can be configured to receive **HTTP requests** from the Pushy server when a new notification is added.
 
 ### How It Works
 
