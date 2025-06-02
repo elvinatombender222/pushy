@@ -20,7 +20,7 @@ if (file_put_contents($filename, $data)) {
     echo "JSON saved successfully to $filename";
 
     chown($filename, "www-data");
-    chgrp($filename, "john");
+    chgrp($filename, "www-data");
     chmod($filename, 0664);
 
     $output = [];
