@@ -28,15 +28,16 @@ Pushy displays rich, grouped notifications using HTML, CSS, and JavaScript — s
 
 <pre>
 /
-├── index.html          # Main HTML interface
-├── script.js           # Client-side interaction logic
-├── styles.css          # Styling for layout and components
-├── write_json.php      # JSON endpoint to receive and save notifications
-├── image/              # Notification and presence icons (e.g., {image name.webp)
-├── statuses/           # JSON files for active notifications
-├── archive/            # JSON files for archived notifications
-├── LICENSE             # MIT License
-└── README.md           # This file
+├── index.html                  # Main HTML interface
+├── script.js                   # Client-side interaction logic
+├── styles.css                  # Styling for layout and components
+├── write_json.php              # JSON endpoint to receive and save notifications
+├── move_notification.php       # Handles trash/archive moves from the frontend
+├── image/                      # Notification and presence icons (e.g., {image name.webp)
+├── statuses/                   # JSON files for active notifications
+├── archive/                    # JSON files for archived notifications
+├── LICENSE                     # MIT License
+└── README.md                   # This file
 </pre>
 
 ---
