@@ -15,6 +15,12 @@ Pushy displays rich, grouped notifications using HTML, CSS, and JavaScript — s
 - Tasker integration for mobile audio or automation triggers
 - Toast alerts for group changes and interactions
 - Clean UI with themeable color and image support
+- Simple JSON POST API to create notifications
+- Group-based organization (e.g., "heartbeat", "media", "download")
+- Archive view toggle
+- Presence indicator (based on `.flg` file)
+- Lightweight, responsive HTML/CSS/JS stack
+- Optional Tasker-based audio notification system
 
 ---
 
