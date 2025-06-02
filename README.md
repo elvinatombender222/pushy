@@ -101,3 +101,14 @@ MIT License — see [`LICENSE`](LICENSE) file for details.
 Pushy was inspired by the excellent design of [Pushover](https://pushover.net), but is entirely independent and self-hosted. No affiliation or endorsement implied.
 
 ---
+
+## 🛠️ Roadmap / Future Plans
+
+- [ ] Add optional "Trash" view in addition to Active and Archive  
+- [ ] Configurable limit for number of notifications to retain  
+- [ ] Ability to restore from Archive or Trash  
+- [ ] Mobile audio support via improved Tasker hooks or optional native bridge  
+- [ ] Optional multi-user mode (with user selector via URL)  
+- [ ] Optional dark mode toggle  
+- [ ] Admin menu for reviewing all groups and storage usage  
+- [ ] Optional GitHub auto-deploy or static sync via script  
