@@ -8,19 +8,17 @@ Pushy displays rich, grouped notifications using HTML, CSS, and JavaScript — s
 
 ## 🔧 Features
 
-- Grouped notifications by type (e.g. `weather`, `system`, `status`)
-- Archive system with one-click toggling between **Active** and **Archive**
-- Optional presence indicator using `.flg` files
-- Fully client-side — no server-side code required
+- Grouped notifications by type (e.g. weather, system, status)
+- Archive system with one-click toggle between Active and Archive
+- Optional presence indicator via .flg file (e.g. on_the_road.flg)
+- Lightweight, responsive frontend (HTML/CSS/JS)
+- Minimal backend: basic PHP scripts only (no database or frameworks)
+- Self-hosted and private by design — ideal for use with Tailscale
 - Tasker integration for mobile audio or automation triggers
 - Toast alerts for group changes and interactions
-- Clean UI with themeable color and image support
-- Simple JSON POST API to create notifications
+- Clean UI with customizable color and image support
+- Simple JSON POST API for creating notifications
 - Group-based organization (e.g., "heartbeat", "media", "download")
-- Archive view toggle
-- Presence indicator (based on `.flg` file)
-- Lightweight, responsive HTML/CSS/JS stack
-- Optional Tasker-based audio notification system
 
 ---
 
@@ -33,9 +31,10 @@ Pushy displays rich, grouped notifications using HTML, CSS, and JavaScript — s
 ├── styles.css                  # Styling for layout and components
 ├── write_json.php              # JSON endpoint to receive and save notifications
 ├── move_notification.php       # Handles trash/archive moves from the frontend
+├── statuses/                   # JSON files storage location
+│   ├── saved/                  # Archived (saved) notifications
+│   ├── trash/                  # Deleted (trashed) notifications
 ├── image/                      # Notification and presence icons (e.g., {image name.webp)
-├── statuses/                   # JSON files for active notifications
-├── archive/                    # JSON files for archived notifications
 ├── LICENSE                     # MIT License
 └── README.md                   # This file
 </pre>
