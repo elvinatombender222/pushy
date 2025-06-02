@@ -115,14 +115,12 @@ This solution offers a reliable, user-controlled alternative to push notificatio
 
 ## 🛠️ Roadmap / Future Plans
 
-- [ ] Add optional "Trash" view in addition to Active and Archive  
+- [ ] Add "Trash" view in addition to Active and Archive  
 - [ ] Configurable limit for number of notifications to retain  
 - [ ] Ability to restore from Archive or Trash  
-- [ ] Mobile audio support via improved Tasker hooks or optional native bridge  
-- [ ] Optional multi-user mode (with user selector via URL)  
-- [ ] Optional dark mode toggle  
+- [ ] Multi-user mode (with user selector via URL)  
+- [ ] Dark mode toggle  
 - [ ] Admin menu for reviewing all groups and storage usage  
-- [ ] Optional GitHub auto-deploy or static sync via script  
 
 ---
 
