@@ -115,18 +115,6 @@ This solution offers a reliable, user-controlled alternative to push notificatio
 
 ---
 
-## 📦 License
-
-MIT License — see [`LICENSE`](LICENSE) file for details.
-
----
-
-## 🙏 Acknowledgments
-
-Pushy was inspired by the excellent design of [Pushover](https://pushover.net), but is entirely independent and self-hosted. No affiliation or endorsement implied.
-
----
-
 ## 🛠️ Roadmap / Future Plans
 
 - [ ] Add optional "Trash" view in addition to Active and Archive  
@@ -137,3 +125,15 @@ Pushy was inspired by the excellent design of [Pushover](https://pushover.net), 
 - [ ] Optional dark mode toggle  
 - [ ] Admin menu for reviewing all groups and storage usage  
 - [ ] Optional GitHub auto-deploy or static sync via script  
+
+---
+
+## 🙏 Acknowledgments
+
+Pushy was inspired by the excellent design of [Pushover](https://pushover.net), but is entirely independent and self-hosted. No affiliation or endorsement implied.
+
+---
+
+## 📦 License
+
+MIT License — see [`LICENSE`](LICENSE) file for details.
