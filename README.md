@@ -55,7 +55,7 @@ You can trigger a notification by sending a JSON payload via HTTP POST to the in
   "details": "'"$DETAILS"'"
 }' http://100.100.57.70/Pushy/server/write_json.php
 
-
+---
 
 ## 🛰️ Presence Indicator with Flag Files
 
