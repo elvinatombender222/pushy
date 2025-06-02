@@ -40,6 +40,23 @@ Pushy displays rich, grouped notifications using HTML, CSS, and JavaScript — s
 
 ---
 
+## 📬 Sending Notifications
+
+You can trigger a notification by sending a JSON payload via HTTP POST to the included `write_json.php` endpoint.
+
+### 🔧 Example `curl` Command
+
+```bash
+/usr/bin/curl -X POST -H "Content-Type: application/json" -d '{
+  "containerType": "routine",
+  "group": "heartbeat",
+  "image": "'"$ALERT_ICON"'",
+  "subtitle": "'"$ALERT_SUBTITLE"'",
+  "details": "'"$DETAILS"'"
+}' http://100.100.57.70/Pushy/server/write_json.php
+
+
+
 ## 🛰️ Presence Indicator with Flag Files
 
 Pushy supports optional presence indicators using lightweight `.flg` files.
