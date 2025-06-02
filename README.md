@@ -109,16 +109,16 @@ Pushy is a web app and cannot trigger native push notifications. To work around 
 - Each device must be individually configured
 - Not ideal for supporting multiple users
 
-- ### Implementation
+### Implementation
 
-  tasker_trigger.py --ip {Phone IP --port 8081 --task pushy_sound &
+  tasker_trigger.py --ip {Phone IP} --port 8081 --task pushy_sound &
 
 This solution offers a reliable, user-controlled alternative to push notifications without any cloud infrastructure.
 
 ---
 
 ## Tailscale
-I don't use certificates and logins because I run it exclusively on my tailnet.  If you know the purpose of [Tailscale](https://tailscale.com) no further explaination is required.
+Pushy runs entirely within my [Tailscale](https://tailscale.com) tailnet, so no certificates or login mechanisms are needed. If you’re familiar with Tailscale, no further explanation is required.
 
 ## 🛠️ Roadmap / Future Plans
 
