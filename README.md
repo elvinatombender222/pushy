@@ -1,6 +1,3 @@
-# pushy
-A personal web-based notification viewer inspired by Pushover
-
 # Pushy
 
 **Pushy** is a self-hosted, web-based notification dashboard inspired by [Pushover](https://pushover.net), designed for personal use on a private network.
@@ -13,7 +10,7 @@ Pushy displays rich, grouped notifications using HTML, CSS, and JavaScript — s
 
 - Grouped notifications by type (e.g. `weather`, `system`, `status`)
 - Archive system with one-click toggling between **Active** and **Archive**
-- Optional presence indicator (`gpsantenna.webp`) based on `.flg` files
+- Optional presence indicator using `.flg` files
 - Fully client-side — no server-side code required
 - Tasker integration for mobile audio or automation triggers
 - Toast alerts for group changes and interactions
@@ -23,31 +20,73 @@ Pushy displays rich, grouped notifications using HTML, CSS, and JavaScript — s
 
 ## 📂 Project Structure
 
-index.html # Main HTML interface
-script.js # Client-side interaction logic
-styles.css # Styling for layout and components
-image/ # Notification and presence icons
-statuses/ # JSON files for active notifications
-archive/ # JSON files for archived notifications
-LICENSE # MIT License
-README.md # This file
-
-
----
-
-## 🚀 Setup
-
-1. Serve the contents using any local web server (e.g. Apache, Nginx)
-2. Ensure Tailscale or another secure access method is active
-3. Place notification `.json` files in the `statuses/` folder
-4. Pushy automatically reads and displays them grouped by type
+<pre>
+/
+├── index.html          # Main HTML interface
+├── script.js           # Client-side interaction logic
+├── styles.css          # Styling for layout and components
+├── image/              # Notification and presence icons (e.g., gpsantenna.webp)
+├── statuses/           # JSON files for active notifications
+├── archive/            # JSON files for archived notifications
+├── LICENSE             # MIT License
+└── README.md           # This file
+</pre>
 
 ---
 
-## 📱 Optional: Tasker Integration
+## 🛰️ Presence Indicator with Flag Files
 
-- Tasker can watch for `.flg` files (e.g. `on_the_road.flg`) and trigger actions such as audio alerts or profile switching
-- The presence indicator will show/hide automatically based on this file’s existence
+Pushy supports optional presence indicators using lightweight `.flg` files.
+
+### Use Case Example
+
+If a file named `on_the_road.flg` is detected in the Pushy root directory, a small icon (e.g., `gpsantenna.webp`) appears in the top-right title bar next to the hamburger menu. This allows for subtle, visual context about device or user state (like whether you're in a car, on the road, or in a particular mode).
+
+### How It Works
+
+- Presence icons are **not clickable**
+- The icon is **only shown** when a specific `.flg` file exists
+- The logic is handled in JavaScript and requires no server-side scripting
+
+### Customization
+
+You can create and monitor your own `.flg` files, for example:
+
+- `focus_mode.flg`
+- `quiet_hours.flg`
+- `office.flg`
+
+Then associate each with a different `.webp` icon and add logic to `script.js` as needed.
+
+---
+
+## 📱 Tasker Integration via HTTP (Android Only)
+
+Pushy is a web app and cannot trigger native push notifications. To work around this, Tasker on Android can be configured to receive **HTTP requests** from the Pushy server when a new notification is added.
+
+### How It Works
+
+1. When a new Pushy notification is generated, your server or script sends an **HTTP request** to Tasker on your Android device.
+2. Tasker listens for this request and triggers an action such as:
+   - Playing a custom audio track
+   - Vibrating the phone
+   - Turning on the display or dimming it
+3. This allows you to receive **real-time alerts** on your phone — even if Pushy is not open in a browser.
+
+### Advantages
+
+- No need to keep the Pushy page open
+- Does not rely on Firebase or any third-party services
+- Works over LAN or Tailscale using secure local HTTP requests
+
+### Limitations
+
+- Only works on Android
+- Requires manual setup of Tasker's HTTP listener
+- Each device must be individually configured
+- Not ideal for supporting multiple users
+
+This solution offers a reliable, user-controlled alternative to push notifications without any cloud infrastructure.
 
 ---
 
