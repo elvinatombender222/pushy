@@ -2,7 +2,7 @@
 
 **Pushy** is a self-hosted, web-based notification dashboard inspired by [Pushover](https://pushover.net), designed for personal use on a private network.
 
-Pushy displays rich, grouped notifications using HTML, CSS, and JavaScript — served over a local web server and gated by [Tailscale](https://tailscale.com) for secure access.
+Pushy displays rich, grouped notifications using HTML, CSS, and JavaScript — served over a local web server.
 
 ---
 
@@ -116,6 +116,9 @@ Pushy is a web app and cannot trigger native push notifications. To work around 
 This solution offers a reliable, user-controlled alternative to push notifications without any cloud infrastructure.
 
 ---
+
+## Tailscale
+I don't use certificates and logins because I run it exclusively on my tailnet.  If you know the purpose of [Tailscale](https://tailscale.com) no further explaination is required.
 
 ## 🛠️ Roadmap / Future Plans
 
