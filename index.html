@@ -6,8 +6,8 @@
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
-    <title>Pushy</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Pushy v2</title>
+    <link rel="stylesheet" href="styles_v2.css">
 </head>
 <body>
     <div class="app-header">
@@ -28,7 +28,11 @@
         <div class="group-filter-container">
             <select id="group-filter">
                 <option value="all">All Groups</option>
-                </select>
+            </select>
+        </div>
+        <div class="menu-section-title">Actions</div>
+        <div class="action-buttons-menu">
+            <button id="delete-all-btn" class="menu-btn delete-all-btn">Delete All in View</button>
         </div>
     </div>
     <div id="main-content-wrapper">
@@ -36,7 +40,7 @@
         <div id="status-container"></div>
     </div>
     
-    <script src="script.js"></script>
+    <script src="script_v2.js"></script>
     <div id="toast" class="toast"></div>
 </body>
 </html>

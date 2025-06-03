@@ -8,6 +8,7 @@ const sideMenu = document.getElementById('side-menu');
 const mainContentWrapper = document.getElementById('main-content-wrapper');
 const appTitleElement = document.getElementById('app-title');
 const toggleBtn = document.getElementById('toggle-view');
+const deleteAllBtn = document.getElementById('delete-all-btn'); // New: Get the delete all button
 
 // Update the app title based on archive state and group filter
 function updateAppTitle(groupName) {
@@ -282,6 +283,66 @@ async function moveJSON(filename, targetDir, source) {
     }
 }
 
+// New: Event listener for "Delete All in View" button
+deleteAllBtn.addEventListener('click', async () => {
+    const confirmation = confirm('Are you sure you want to delete all visible items? This action cannot be undone.');
+    if (!confirmation) {
+        return;
+    }
+
+    const statusesToDelete = filterStatusesByGroup(allStatusesData, currentGroupFilter);
+    const source = currentDirectory === 'statuses' ? 'statuses' : 'saved';
+    let successfulDeletions = 0;
+
+    for (const status of statusesToDelete) {
+        try {
+            const response = await fetch('/Pushy/move_json.php', {
+                method: 'POST',
+                headers: { 
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    'Cache-Control': 'no-cache, no-store, must-revalidate',
+                    'Pragma': 'no-cache',
+                    'Expires': '0'
+                },
+                cache: 'no-store',
+                body: new URLSearchParams({ 
+                    action: 'trash', // Always move to trash for deletion
+                    filename: status.file,
+                    source: source 
+                })
+            });
+            const result = await response.json();
+            if (result.status === 'success') {
+                successfulDeletions++;
+            } else {
+                console.error(`Error deleting file ${status.file}:`, result.message);
+            }
+        } catch (error) {
+            console.error(`Error deleting file ${status.file}:`, error);
+        }
+    }
+
+    if (successfulDeletions > 0) {
+        showToast(`Deleted ${successfulDeletions} item(s).`);
+        await loadStatuses(); // Reload after all deletions
+        const filtered = filterStatusesByGroup(allStatusesData, currentGroupFilter);
+        if (filtered.length === 0 && currentGroupFilter !== 'all') {
+            currentGroupFilter = 'all';
+            document.getElementById('group-filter').value = 'all';
+            updateAppTitle(null);
+            updateContent(allStatusesData);
+            showToast("Group is now empty — showing all");
+        } else {
+            updateContent(filtered);
+        }
+    } else {
+        showToast("No items to delete or an error occurred.");
+    }
+    sideMenu.classList.remove('open');
+    hamburgerIcon.classList.remove('open');
+    mainContentWrapper.classList.remove('menu-open');
+});
+
 
 // Initialization
 loadStatuses();
@@ -296,4 +357,3 @@ setInterval(() => {
     loadStatuses();
     checkFlagFile();
 }, 5000);
-
