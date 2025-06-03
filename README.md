@@ -32,9 +32,9 @@ Pushy displays rich, grouped notifications using HTML, CSS, and JavaScript — s
 ├── write_json.php              # JSON endpoint to receive and save notifications
 ├── move_notification.php       # Handles trash/archive moves from the frontend
 ├── tasker_trigger.py           # Send an http request to Tasker
-├── statuses/                   # JSON files storage location
-│   ├── saved/                  # Archived (saved) notifications
-│   ├── trash/                  # Deleted (trashed) notifications
+├── statuses/                   # Active JSON files storage location
+│   ├── saved/                  # Archived JSON files (saved) notifications
+│   ├── trash/                  # Deleted JSON files (trashed) notifications
 ├── image/                      # Notification and presence icons (e.g., heartbeat.webp)
 ├── LICENSE                     # MIT License
 └── README.md                   # This file
@@ -132,7 +132,8 @@ Pushy runs entirely within my [Tailscale](https://tailscale.com) tailnet, so no 
 - [ ] Ability to restore from Archive or Trash  
 - [ ] Multi-user mode (with user selector via URL)  
 - [ ] Dark mode toggle  
-- [ ] Admin menu for reviewing all groups and storage usage  
+- [ ] Admin menu for reviewing all groups and storage usage
+- [ ] Empty Trash
 
 ---
 
