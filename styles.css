@@ -125,7 +125,7 @@ body {
 }
 .side-menu .toggle-buttons,
 .side-menu .group-filter-container,
-.side-menu .action-buttons-menu { /* Added for the new action buttons section */
+.side-menu .action-buttons-menu {
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -136,7 +136,7 @@ body {
 /* Shared base styles */
 .side-menu .toggle-buttons button,
 .side-menu .group-filter-container select,
-.side-menu .action-buttons-menu button { /* Added for the new action buttons */
+.side-menu .action-buttons-menu button {
     width: 100%;
     padding: 12px 15px;
     font-size: 1em;
@@ -157,7 +157,6 @@ body {
     background-size: 12px;
 }
 
-
 .side-menu .toggle-buttons button.active,
 .side-menu .group-filter-container select.active {
     outline: 2px solid #555;
@@ -173,7 +172,6 @@ body {
     background-color: #34495e;
 }
 
-/* New: Styles for Delete All button in the menu */
 .side-menu .delete-all-btn {
     background-color: #e74c3c;
     color: white;
@@ -182,7 +180,6 @@ body {
 .side-menu .delete-all-btn:hover {
     background-color: #c0392b;
 }
-
 
 /* Main Content Area */
 #status-container {
@@ -202,6 +199,7 @@ body {
     position: relative;
     cursor: pointer;
 }
+
 .routine .image-column {
     flex: 0 0 75px;
     display: flex;
@@ -216,6 +214,7 @@ body {
     max-height: 100%;
     object-fit: cover;
 }
+
 .new_state {
     background-color: #fff;
 }
@@ -234,6 +233,7 @@ body {
     max-height: 240vh;
     object-fit: contain;
 }
+
 .new_county {
     background-color: #fff;
 }
@@ -252,6 +252,7 @@ body {
     max-height: 80vh;
     object-fit: contain;
 }
+
 .content-column {
     flex: 1;
     display: flex;
@@ -317,7 +318,18 @@ body {
     transition: opacity 0.3s ease;
     z-index: 9999;
 }
-
 .toast.show {
     opacity: 0.9;
 }
+
+/* ░░░ ADDED: Minimal style for current_location ░░░ */
+.current_location {
+    background-color: #f9f9f9;
+    /* border-left: 5px solid #2c3e50; */
+}
+.current_location .content-column {
+    padding: 15px;
+    /* font-style: italic; */
+    color: #444;
+}
+
