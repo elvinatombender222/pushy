@@ -24,7 +24,7 @@ Pushy displays rich, grouped notifications using HTML, CSS, and JavaScript — s
 
 ## Updates
 - Version number added to bottom of hamburger menu (2025-06-09)
-- New containerType "current_location" (2025-06-09) It is "pinned" to the top of the notification list.  Only a single instance of this container will display at any given time and is over-written by a newer notification.
+- New containerType "current_location" is "pinned" to the top of the notification list.  Only a single instance of this container will display at any given time and is over-written by a newer notification. (2025-06-09)
 
 ---
 
