@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>Pushy</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-header">
+        <div class="app-title" id="app-title">Pushy</div>
+        <img id="presence-icon" class="presence-icon" src="images/gpsantenna.webp" alt="GPS Active" style="display: none;">
+        <div class="hamburger-icon" id="hamburger-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+    <div id="side-menu" class="side-menu">
+        <div class="menu-section-title">View Options</div>
+        <div class="toggle-buttons">
+            <button id="toggle-view" class="toggle-btn">Show Archive</button>
+        </div>
+        <div class="menu-section-title">Filter by Group</div>
+        <div class="group-filter-container">
+            <select id="group-filter">
+                <option value="all">All Groups</option>
+            </select>
+        </div>
+        <div class="menu-section-title">Actions</div>
+        <div class="action-buttons-menu">
+            <button id="delete-all-btn" class="menu-btn delete-all-btn">Delete All in View</button>
+        </div>
+        <div class="menu-version">Version 4.0</div>
+    </div>
+    <div id="main-content-wrapper">
+        <div id="archive-banner" style="display: none;">Archive View</div>
+        <div id="status-container"></div>
+    </div>
+    
+    <script src="script.js"></script>
+    <div id="toast" class="toast"></div>
+</body>
+</html>
