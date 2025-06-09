@@ -133,6 +133,7 @@ Pushy runs entirely within my [Tailscale](https://tailscale.com) tailnet, so no 
 - [ ] Multi-user mode (with user selector via URL)  
 - [ ] Dark mode toggle  
 - [ ] Admin menu for reviewing all groups and storage usage
+- [ ] Find within notification including active, archive and trash
 - [ ] Empty Trash
 
 ---
