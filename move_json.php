@@ -1,32 +1,52 @@
 <?php
-// Get the action (trash or archive) and file name from the request
 $action = $_POST['action'];
 $filename = $_POST['filename'];
-$source = $_POST['source'] ?? 'statuses'; // Default to main statuses directory
+$source = $_POST['source'] ?? 'statuses';
 
-// Set source directory based on where the file is coming from
-$sourceDir = "/var/www/html/Pushy/";
+// Base directory
+$baseDir = "/var/www/html/Pushy/statuses/";
+$sourceDir = $baseDir;
+
+// Determine source path
 if ($source === 'saved') {
-    $sourceDir .= "statuses/saved/";
+    $sourceDir .= "saved/";
+} else if ($source === 'trash') {
+    $sourceDir .= "trash/";
 } else {
-    $sourceDir .= "statuses/";
+    $sourceDir .= "";
 }
 
-// Set target directory based on action
+$filePath = $sourceDir . $filename;
+
+// Handle delete
+if ($action === 'delete') {
+    if (file_exists($filePath)) {
+        if (unlink($filePath)) {
+            echo json_encode(["status" => "success", "action" => "deleted"]);
+        } else {
+            echo json_encode(["status" => "error", "message" => "Failed to delete file"]);
+        }
+    } else {
+        echo json_encode(["status" => "error", "message" => "File not found"]);
+    }
+    exit;
+}
+
+// Handle move to trash or saved
 $targetDir = "";
 switch ($action) {
     case "trash":
-        $targetDir = "/var/www/html/Pushy/statuses/trash/";
+        $targetDir = $baseDir . "trash/";
         break;
     case "saved":
-        $targetDir = "/var/www/html/Pushy/statuses/saved/";
+        $targetDir = $baseDir . "saved/";
         break;
     default:
         echo json_encode(["status" => "error", "message" => "Invalid action specified"]);
         exit;
 }
 
-// Ensure the target directory exists
+// Ensure target directory exists
 if (!is_dir($targetDir)) {
     if (!mkdir($targetDir, 0755, true)) {
         echo json_encode(["status" => "error", "message" => "Failed to create target directory"]);
@@ -34,9 +54,9 @@ if (!is_dir($targetDir)) {
     }
 }
 
-// Check if file exists before attempting to move
-if (file_exists($sourceDir . $filename)) {
-    if (rename($sourceDir . $filename, $targetDir . $filename)) {
+// Move file
+if (file_exists($filePath)) {
+    if (rename($filePath, $targetDir . $filename)) {
         echo json_encode(["status" => "success", "action" => $action]);
     } else {
         echo json_encode(["status" => "error", "message" => "Failed to move file due to permission issues"]);
@@ -45,3 +65,4 @@ if (file_exists($sourceDir . $filename)) {
     echo json_encode(["status" => "error", "message" => "File not found"]);
 }
 ?>
+
