@@ -9,9 +9,8 @@ Pushy displays rich, grouped notifications using HTML, CSS, PHP and JavaScript. 
 ## 🔧 Features
 
 - Grouped notifications by type (e.g. weather, system, status)
-- Archive system with one-click toggle between Active and Archive
 - Archive or delete individual notifications from within the notification
-- Delete by view (active, archive, by group)
+- Delete all when in "trash" view
 - Optional presence indicator via .flg file (e.g. on_the_road.flg)
 - Lightweight, responsive frontend (HTML/CSS/JS)
 - Minimal backend: basic PHP scripts only (no database or frameworks)
