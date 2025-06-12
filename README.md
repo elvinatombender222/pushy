@@ -1,6 +1,6 @@
 # Pushy
 
-**Pushy** is a self-hosted, web-based notification dashboard inspired by [Pushover](https://pushover.net), designed for personal use on a private network.
+**Pushy v4.2** is a self-hosted, web-based notification dashboard inspired by [Pushover](https://pushover.net), designed for personal use on a private network.
 
 Pushy displays rich, grouped notifications using HTML, CSS, PHP and JavaScript.  Served by your web server.
 
@@ -19,6 +19,13 @@ Pushy displays rich, grouped notifications using HTML, CSS, PHP and JavaScript. 
 - Toast alerts for group changes and interactions
 - Clean UI with customizable color and image support
 - Simple JSON POST API for creating notifications
+
+---
+
+## ⚡ Quick Start
+1. Copy the project to your web server directory (e.g., `/var/www/html/Pushy`)
+2. Open `index.html` in your browser
+3. Send a test notification using `write_json.php` (see below)
 
 ---
 
