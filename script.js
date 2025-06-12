@@ -1,18 +1,20 @@
 let currentDirectory = 'statuses';
 let previousFiles = [];
-let allStatusesData = []; 
+let allStatusesData = [];
 let currentGroupFilter = 'all';
 
 const hamburgerIcon = document.getElementById('hamburger-icon');
 const sideMenu = document.getElementById('side-menu');
 const mainContentWrapper = document.getElementById('main-content-wrapper');
 const appTitleElement = document.getElementById('app-title');
-const toggleBtn = document.getElementById('toggle-view');
+const viewSelector = document.getElementById('view-selector');
 const deleteAllBtn = document.getElementById('delete-all-btn');
+const actionTitle = document.querySelectorAll('.menu-section-title')[2]; // "Actions" title
 
 function updateAppTitle(groupName) {
     let title = 'Pushy';
     if (currentDirectory === 'statuses/saved') title += ' - Archive';
+    else if (currentDirectory === 'statuses/trash') title += ' - Trash';
     if (groupName && groupName !== 'all') title += ` - ${groupName}`;
     appTitleElement.textContent = title;
 }
@@ -26,7 +28,7 @@ function showToast(message) {
 
 hamburgerIcon.addEventListener('click', () => {
     sideMenu.classList.toggle('open');
-    hamburgerIcon.classList.toggle('open'); 
+    hamburgerIcon.classList.toggle('open');
     mainContentWrapper.classList.toggle('menu-open');
 });
 
@@ -51,9 +53,8 @@ async function checkFlagFile() {
     }
 }
 
-toggleBtn.addEventListener('click', () => {
-    const nextDirectory = currentDirectory === 'statuses' ? 'statuses/saved' : 'statuses';
-    switchDirectory(nextDirectory);
+viewSelector.addEventListener('change', () => {
+    switchDirectory(viewSelector.value);
 });
 
 document.getElementById('group-filter').addEventListener('change', (event) => {
@@ -68,9 +69,10 @@ document.getElementById('group-filter').addEventListener('change', (event) => {
 
 function switchDirectory(directory) {
     currentDirectory = directory;
-    updateToggleButton();
+    viewSelector.value = directory;
     currentGroupFilter = 'all';
     document.getElementById('group-filter').value = 'all';
+    updateViewVisibility();
     updateAppTitle(null);
     window.scrollTo(0, 0);
     loadStatuses();
@@ -79,9 +81,10 @@ function switchDirectory(directory) {
     mainContentWrapper.classList.remove('menu-open');
 }
 
-function updateToggleButton() {
-    if (!toggleBtn) return;
-    toggleBtn.textContent = currentDirectory === 'statuses' ? 'Show Archive' : 'Show Active';
+function updateViewVisibility() {
+    const isTrash = currentDirectory === 'statuses/trash';
+    deleteAllBtn.style.display = isTrash ? 'block' : 'none';
+    if (actionTitle) actionTitle.style.display = isTrash ? 'block' : 'none';
 }
 
 function formatDateTime(epoch) {
@@ -109,7 +112,6 @@ function createFlexContainer(data, file) {
     box.className = `flex-container ${data.containerType}`;
     box.dataset.filename = file;
 
-    // Special case: current_location
     if (data.containerType === 'current_location') {
         box.innerHTML = `
             <div class="content-column">
@@ -127,11 +129,20 @@ function createFlexContainer(data, file) {
             </div>`;
     }
 
-    const source = currentDirectory === 'statuses' ? 'statuses' : 'saved';
-    const actionButtonsHTML = currentDirectory === 'statuses'
-        ? `<button class="delete-btn" onclick="moveJSON('${file}', 'trash', '${source}')">Delete</button>
-           <button class="archive-btn" onclick="moveJSON('${file}', 'saved', '${source}')">Archive</button>`
-        : `<button class="delete-btn" onclick="moveJSON('${file}', 'trash', '${source}')">Delete</button>`;
+    const source =
+        currentDirectory === 'statuses/saved' ? 'saved' :
+        currentDirectory === 'statuses/trash' ? 'trash' : 'statuses';
+
+    let actionButtonsHTML = '';
+
+    if (currentDirectory === 'statuses') {
+        actionButtonsHTML = `
+            <button class="delete-btn" onclick="moveJSON('${file}', 'trash', '${source}')">Delete</button>
+            <button class="archive-btn" onclick="moveJSON('${file}', 'saved', '${source}')">Archive</button>`;
+    } else if (currentDirectory === 'statuses/saved') {
+        actionButtonsHTML = `
+            <button class="delete-btn" onclick="moveJSON('${file}', 'trash', '${source}')">Delete</button>`;
+    }
 
     innerHtml += `
         <div class="content-column">
@@ -177,7 +188,6 @@ async function updateContent(filteredStatuses) {
     const container = document.getElementById('status-container');
     container.innerHTML = '';
 
-    // Pin current_location if present
     const pinned = filteredStatuses.find(s => s.data.containerType === 'current_location');
     const rest = filteredStatuses.filter(s => s.data.containerType !== 'current_location');
 
@@ -257,11 +267,15 @@ async function moveJSON(filename, targetDir, source) {
 }
 
 deleteAllBtn.addEventListener('click', async () => {
-    const confirmDelete = confirm('Are you sure you want to delete all visible items?');
+    if (currentDirectory !== 'statuses/trash') {
+        showToast("Delete All only available in Trash view.");
+        return;
+    }
+
+    const confirmDelete = confirm('Permanently delete all visible trash items?');
     if (!confirmDelete) return;
 
     const toDelete = filterStatusesByGroup(allStatusesData, currentGroupFilter);
-    const source = currentDirectory === 'statuses' ? 'statuses' : 'saved';
     let successCount = 0;
 
     for (const status of toDelete) {
@@ -270,7 +284,7 @@ deleteAllBtn.addEventListener('click', async () => {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
                 cache: 'no-store',
-                body: new URLSearchParams({ action: 'trash', filename: status.file, source })
+                body: new URLSearchParams({ action: 'delete', filename: status.file, source: 'trash' })
             });
             const result = await res.json();
             if (result.status === 'success') successCount++;
@@ -280,7 +294,7 @@ deleteAllBtn.addEventListener('click', async () => {
     }
 
     if (successCount > 0) {
-        showToast(`Deleted ${successCount} item(s).`);
+        showToast(`Permanently deleted ${successCount} item(s).`);
         await loadStatuses();
         const filtered = filterStatusesByGroup(allStatusesData, currentGroupFilter);
         if (filtered.length === 0 && currentGroupFilter !== 'all') {
@@ -293,7 +307,7 @@ deleteAllBtn.addEventListener('click', async () => {
             updateContent(filtered);
         }
     } else {
-        showToast("No items to delete or an error occurred.");
+        showToast("No items deleted or error occurred.");
     }
 
     sideMenu.classList.remove('open');
@@ -303,7 +317,7 @@ deleteAllBtn.addEventListener('click', async () => {
 
 loadStatuses();
 checkFlagFile();
-document.addEventListener('DOMContentLoaded', updateToggleButton);
+document.addEventListener('DOMContentLoaded', updateViewVisibility);
 setInterval(() => {
     loadStatuses();
     checkFlagFile();

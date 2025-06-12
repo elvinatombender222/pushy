@@ -56,7 +56,6 @@ body {
     display: inline-block;
 }
 
-
 /* Hamburger Icon Styles */
 .hamburger-icon {
     width: 35px;
@@ -135,6 +134,7 @@ body {
 
 /* Shared base styles */
 .side-menu .toggle-buttons button,
+.side-menu .toggle-buttons select,
 .side-menu .group-filter-container select,
 .side-menu .action-buttons-menu button {
     width: 100%;
@@ -149,7 +149,8 @@ body {
     appearance: none;
 }
 
-/* Dropdown arrow ONLY for select */
+/* Dropdown arrow styling */
+.side-menu .toggle-buttons select,
 .side-menu .group-filter-container select {
     background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23000%22%20d%3D%22M287%2C197.989L146.2%2C57.189L5.4%2C197.989c-7.8%2C7.8-20.5%2C7.8-28.3%2C0c-7.8-7.8-7.8-20.5%2C0-28.3l142.9-142.9c7.8-7.8%2C20.5-7.8%2C28.3%2C0l142.9%2C142.9C294.7%2C177.489%2C294.7%2C190.189%2C287%2C197.989z%22%2F%3E%3C%2Fsvg%3E');
     background-repeat: no-repeat;
@@ -162,14 +163,8 @@ body {
     outline: 2px solid #555;
 }
 
-.side-menu .toggle-btn {
-    background-color: #2c3e50;
-    color: white;
-    transition: background-color 0.2s ease;
-    background-image: none;
-}
 .side-menu .toggle-btn:hover {
-    background-color: #34495e;
+    background-color: #e0e0e0;
 }
 
 .side-menu .delete-all-btn {
@@ -303,6 +298,22 @@ body {
     color: white;
 }
 
+/* Optional: Trash View Visual Indicator */
+.trash {
+    background-color: #fef3f3;
+}
+
+/* Special styling for current_location */
+.current_location {
+    background-color: #f9f9f9;
+}
+.current_location .content-column {
+    padding: 15px;
+    color: #444;
+    font-size: 1.25em;
+    font-weight: bold;
+}
+
 .toast {
     position: fixed;
     bottom: 30px;
@@ -320,17 +331,6 @@ body {
 }
 .toast.show {
     opacity: 0.9;
-}
-
-/* ░░░ ADDED: Minimal style for current_location ░░░ */
-.current_location {
-    background-color: #f9f9f9;
-    /* border-left: 5px solid #2c3e50; */
-}
-.current_location .content-column {
-    padding: 15px;
-    /* font-style: italic; */
-    color: #444;
 }
 
 .menu-version {
