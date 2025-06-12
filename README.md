@@ -2,7 +2,7 @@
 
 **Pushy** is a self-hosted, web-based notification dashboard inspired by [Pushover](https://pushover.net), designed for personal use on a private network.
 
-Pushy displays rich, grouped notifications using HTML, CSS, and JavaScript — served over a local web server.
+Pushy displays rich, grouped notifications using HTML, CSS, and JavaScript served over a local web server.
 
 ---
 
