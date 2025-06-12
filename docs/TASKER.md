@@ -1,4 +1,4 @@
-Pushy as a web app and cannot trigger native push notifications. To work around this [Tasker](https://tasker.joaoapps.com/) on Android can be configured to receive **HTTP requests** from the Pushy server when a new notification is added.
+Pushy as a web app cannot trigger native push notifications. To work around this [Tasker](https://tasker.joaoapps.com/) on Android can be configured to receive **HTTP requests** from the Pushy server when a new notification is added.
 
 ### How It Works
 
