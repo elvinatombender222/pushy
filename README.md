@@ -135,14 +135,14 @@ Pushy runs entirely within my [Tailscale](https://tailscale.com) tailnet, so no 
 
 ## 🛠️ Roadmap / Future Plans
 
-- [ ] Add "Trash" view in addition to Active and Archive  
+- [X] Add "Trash" view in addition to Active and Archive  
 - [ ] Configurable limit for number of notifications to retain  
 - [ ] Ability to restore from Archive or Trash  
 - [ ] Multi-user mode (with user selector via URL)  
 - [ ] Dark mode toggle  
 - [ ] Admin menu for reviewing all groups and storage usage
 - [ ] Find (within notifications including active, archive and trash)
-- [ ] Empty Trash
+- [X] Empty Trash
 
 ---
 
