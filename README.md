@@ -30,6 +30,8 @@ Pushy displays rich, grouped notifications using HTML, CSS, PHP and JavaScript. 
 
 ## 📦 Updates
 
+- **2025-06-20** — Added a toggle button for the on_the_road.flg file
+- **2025-06-11** — Version number incremented to 4.3
 - **2025-06-11** — Added a "Trash" view
 - **2025-06-11** — Version number incremented to 4.2
 - **2025-06-09** — Version number added to bottom of hamburger menu
