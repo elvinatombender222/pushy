@@ -176,6 +176,27 @@ body {
     background-color: #c0392b;
 }
 
+/* 🎯 GLOBAL: Toggle Flag Button Styling (fixed scope) */
+button.start-flag-btn {
+    background-color: #28a745 !important;
+    color: white !important;
+}
+button.start-flag-btn:hover {
+    background-color: #218838;
+}
+button.stop-flag-btn {
+    background-color: #dc3545 !important;
+    color: white !important;
+}
+button.stop-flag-btn:hover {
+    background-color: #c82333;
+}
+
+/* Optional transition for toggle button */
+#toggle-flag-btn {
+    transition: background-color 0.3s ease;
+}
+
 /* Main Content Area */
 #status-container {
     max-width: 800px;

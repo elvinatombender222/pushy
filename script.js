@@ -10,6 +10,8 @@ const appTitleElement = document.getElementById('app-title');
 const viewSelector = document.getElementById('view-selector');
 const deleteAllBtn = document.getElementById('delete-all-btn');
 const actionTitle = document.querySelectorAll('.menu-section-title')[2]; // "Actions" title
+const toggleFlagBtn = document.getElementById('toggle-flag-btn');
+const presenceIcon = document.getElementById('presence-icon');
 
 function updateAppTitle(groupName) {
     let title = 'Pushy';
@@ -41,7 +43,6 @@ document.addEventListener('click', (event) => {
 });
 
 async function checkFlagFile() {
-    const presenceIcon = document.getElementById('presence-icon');
     try {
         const response = await fetch(`/Pushy/on_the_road.flg?t=${Date.now()}`, {
             headers: { 'Cache-Control': 'no-cache, no-store', 'Pragma': 'no-cache', 'Expires': '0' },
@@ -52,6 +53,32 @@ async function checkFlagFile() {
         presenceIcon.style.display = 'none';
     }
 }
+
+async function updateToggleFlagButton() {
+    try {
+        const response = await fetch(`/Pushy/on_the_road.flg?t=${Date.now()}`, {
+            cache: 'no-store'
+        });
+        const isOn = response.ok;
+        toggleFlagBtn.textContent = isOn ? 'Stop' : 'Start';
+        toggleFlagBtn.classList.toggle('start-flag-btn', !isOn);
+        toggleFlagBtn.classList.toggle('stop-flag-btn', isOn);
+    } catch {
+        toggleFlagBtn.textContent = 'Start';
+        toggleFlagBtn.classList.add('start-flag-btn');
+        toggleFlagBtn.classList.remove('stop-flag-btn');
+    }
+}
+
+toggleFlagBtn.addEventListener('click', async () => {
+    const action = toggleFlagBtn.textContent === 'Start' ? 'start' : 'stop';
+    try {
+        await fetch(`/Pushy/${action}_flag.php`, { method: 'POST' });
+        await updateToggleFlagButton();
+    } catch (err) {
+        console.error('Toggle flag error:', err);
+    }
+});
 
 viewSelector.addEventListener('change', () => {
     switchDirectory(viewSelector.value);
@@ -317,9 +344,16 @@ deleteAllBtn.addEventListener('click', async () => {
 
 loadStatuses();
 checkFlagFile();
-document.addEventListener('DOMContentLoaded', updateViewVisibility);
+updateToggleFlagButton();
+
+document.addEventListener('DOMContentLoaded', () => {
+    updateViewVisibility();
+    updateToggleFlagButton();
+});
+
 setInterval(() => {
     loadStatuses();
     checkFlagFile();
+    updateToggleFlagButton();
 }, 5000);
 
